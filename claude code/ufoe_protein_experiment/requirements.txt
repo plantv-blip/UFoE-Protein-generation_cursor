@@ -1,0 +1,20 @@
+# UFoE 단백질 구조 생성 실험 의존성
+# Phase 0-1: 필터 구현 + 서열 생성
+
+numpy>=1.24.0
+scipy>=1.10.0
+pandas>=2.0.0
+biopython>=1.81
+pytest>=7.3.0
+matplotlib>=3.7.0
+plotly>=5.14.0
+
+# Phase 2: MD 시뮬레이션 + 구조 예측 + 분석
+# 주의: OpenMM은 conda 설치 권장
+#   conda install -c conda-forge openmm pdbfixer
+# openmm>=8.0             # MD 시뮬레이션 엔진
+# pdbfixer>=1.9           # 구조 전처리 (전체 원자 재구성)
+# transformers>=4.30.0    # ESMFold 로컬 모드 (선택)
+# torch>=2.0.0            # ESMFold 로컬 모드 (선택)
+
+requests>=2.28.0          # ESMFold API 모드
