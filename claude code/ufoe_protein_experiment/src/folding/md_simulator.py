@@ -103,6 +103,9 @@ class MDConfig:
     # 스냅샷 저장 간격 (ns)
     snapshot_interval_ns: float = 1.0
 
+    # True면 OpenMM/pdbfixer 없이 mock 궤적만 반환 (Colab mock 모드용)
+    force_mock: bool = False
+
     @property
     def n_steps(self) -> int:
         """전체 시뮬레이션 스텝 수."""
@@ -266,7 +269,7 @@ class MDSimulator:
         -------
         MDTrajectory
         """
-        if not self._openmm_available:
+        if not self._openmm_available or getattr(self.config, "force_mock", False):
             return self._mock_trajectory(
                 candidate_id, simulation_type, pdb_path,
                 simulation_time_ns or self.config.simulation_time_ns

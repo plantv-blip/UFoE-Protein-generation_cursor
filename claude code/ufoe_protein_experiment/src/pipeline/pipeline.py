@@ -168,11 +168,12 @@ class Phase2Pipeline:
             self.config.md_time_ns = 1.0
             self.config.md_refinement_ns = 0.5
 
-        # MD 설정
+        # MD 설정 (run_mode=='mock'이면 실제 MD 대신 mock 궤적 사용)
         if self.config.md_config is None:
             self.config.md_config = MDConfig(
                 simulation_time_ns=self.config.md_time_ns,
                 output_dir=str(self.output_dir / "md"),
+                force_mock=(self.config.run_mode == "mock"),
             )
 
         self.md_sim = MDSimulator(self.config.md_config)

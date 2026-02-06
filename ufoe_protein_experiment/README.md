@@ -36,9 +36,8 @@ ufoe_protein_experiment/
 
 ## Google Colab에서 바로 실행
 
-1. [Colab에서 노트북 열기](https://colab.research.google.com/github/plantv-blip/UFoE-Protein-generation_cursor/blob/main/ufoe_protein_experiment/notebooks/UFoE_Full_Experiment.ipynb)
-2. **Runtime → Run all** 로 위에서부터 순서대로 실행 (또는 셀을 하나씩 실행)
-3. 환경 설정 셀 실행 후 `!python run_colab.py` 로 파이프라인만 실행할 수도 있음
+- **Colab A100 · n=5 한 번에 실행:** [UFoE_Colab_A100_RunAll.ipynb](https://colab.research.google.com/github/plantv-blip/UFoE-Protein-generation_cursor/blob/main/ufoe_protein_experiment/notebooks/UFoE_Colab_A100_RunAll.ipynb) — 셀 순서대로: 설치 → 생성(n=5) → MD → 결과.
+- **전체 실험 노트북:** [UFoE_Full_Experiment.ipynb](https://colab.research.google.com/github/plantv-blip/UFoE-Protein-generation_cursor/blob/main/ufoe_protein_experiment/notebooks/UFoE_Full_Experiment.ipynb) — **Runtime → Run all** 또는 셀 하나씩 실행. 환경 설정 후 `!python run_colab.py` 로 파이프라인만 실행 가능.
 
 ## 설치 (로컬)
 
