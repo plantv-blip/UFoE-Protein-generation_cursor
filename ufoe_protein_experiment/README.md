@@ -25,6 +25,7 @@ ufoe_protein_experiment/
 ├── run_phase2a.py / run_phase2b.py / run_phase2c.py
 ├── run_phase3.py               # Phase 3 소거 루프
 ├── run_reference_pipeline.py   # 기준 파이프라인(Claude Code) 실행
+├── run_colab.py                # Colab 한 번에 실행 진입점
 ├── DESIGN.md
 ├── REFERENCE_PIPELINE.md       # 기준 코드 위치 및 실행 가이드
 ├── REPORT_Phase0-2_Summary.md  # Phase 0-2 종합 보고서
@@ -33,7 +34,13 @@ ufoe_protein_experiment/
 └── requirements.txt
 ```
 
-## 설치
+## Google Colab에서 바로 실행
+
+1. [Colab에서 노트북 열기](https://colab.research.google.com/github/plantv-blip/UFoE-Protein-generation_cursor/blob/main/ufoe_protein_experiment/notebooks/UFoE_Full_Experiment.ipynb)
+2. **Runtime → Run all** 로 위에서부터 순서대로 실행 (또는 셀을 하나씩 실행)
+3. 환경 설정 셀 실행 후 `!python run_colab.py` 로 파이프라인만 실행할 수도 있음
+
+## 설치 (로컬)
 
 ```bash
 pip install -r requirements.txt

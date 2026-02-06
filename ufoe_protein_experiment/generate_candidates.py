@@ -63,7 +63,7 @@ def esmfold_predict_api(sequence: str, out_pdb: Path, candidate_id: str, use_api
         try:
             import requests
             url = "https://api.esmatlas.com/foldSequence/v1/pdb/"
-            r = requests.post(url, data=sequence, timeout=120)
+            r = requests.post(url, data=sequence, timeout=60)
             if r.status_code == 200 and r.text and "ATOM" in r.text:
                 out_pdb.parent.mkdir(parents=True, exist_ok=True)
                 out_pdb.write_text(r.text, encoding="utf-8")
@@ -113,6 +113,7 @@ def main():
     report_rows = []
 
     for i in range(args.n):
+        print(f"[{i+1}/{args.n}] 후보 생성 및 ESMFold 예측 중...", flush=True)
         length = 60 + (i % 41)
         seq, structure = generate_candidate(length=length, type=args.type, filter_compatible=True)
 
@@ -135,6 +136,8 @@ def main():
 
         # ESMFold
         pdb_path = out / "structures" / f"{cid}.pdb"
+        if args.esmfold == "api":
+            print(f"  ESMFold API 호출 중 (최대 60초)...", flush=True)
         esm = esmfold_predict_api(seq, pdb_path, cid, use_api=(args.esmfold == "api"))
         plddt = esm.get("plddt_mean", 0)
 
